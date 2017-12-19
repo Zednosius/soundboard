@@ -1,5 +1,5 @@
 $(function() {
-    $('button').click(function() {
+    $('.boardbutton').click(function() {
         console.log($(this))
         $.ajax({
             url: '/',
@@ -14,5 +14,21 @@ $(function() {
                 console.log(error);
             }
         });
+    });
+
+    $('.stopbutton').click(function() {
+        $.ajax({
+            url: '/',
+            dataType: 'json',
+            contentType: 'application/json',
+            data: JSON.stringify({"stop": true}),
+            type: 'POST',
+            success: function(response) {
+                console.log(response);
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        })
     });
 });
