@@ -7,11 +7,11 @@
 </script>
 
 <div class=page>
-  <h1>Soundboard</h1>
+  <h1>Soundboard</h1> <button class="stopbutton clickeffect">STOP</button>
 </div>
     {% for sound in sounds %}
     <div class=boarddiv>
-        <button class="boardbutton" value="{{sound[1]|string}}">{{sound[0]|string}}</button>
+        <button class="boardbutton clickeffect" value="{{sound[1]|string}}">{{sound[0]|string}}</button>
     </div>
     {% endfor %}
 {% endblock %}
