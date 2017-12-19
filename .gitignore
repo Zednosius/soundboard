@@ -1,2 +1,6 @@
 sounds/*
 *.pyc
+*.dll
+dist/
+build/
+plugins/
