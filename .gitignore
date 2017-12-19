@@ -4,3 +4,4 @@ sounds/*
 dist/
 build/
 plugins/
+vlc.py
