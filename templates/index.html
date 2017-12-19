@@ -1,0 +1,19 @@
+<!doctype html>
+{% extends "layout.html" %}
+{% block body %}
+<title>Soundboard</title>
+<script type=text/javascript>
+  $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+</script>
+
+<div class=page>
+  <h1>Soundboard</h1>
+</div>
+    {% for sound in sounds %}
+    <div class=boarddiv>
+        <button class="boardbutton" value="{{sound[1]|string}}">{{sound[0]|string}}</button>
+    </div>
+    {% endfor %}
+{% endblock %}
+
+<script src="{{url_for('static', filename='script.js')}}"> </script>
