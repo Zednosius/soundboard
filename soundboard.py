@@ -24,7 +24,7 @@ pprint(sound_cache)
 print()
 
 @app.route("/", methods=["POST","GET"])
-def hello():
+def soundboard():
     global player
     print(request)
     if request.method == "POST":
