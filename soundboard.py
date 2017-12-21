@@ -1,10 +1,13 @@
 from flask import Flask
 from flask import request, render_template
-from playsound import playsound
 from flask import jsonify
 import os
 import vlc
-import time
+from pprint import pprint
+import sys
+
+if sys.version_info[0] < 3:
+    raise Exception("Python 3 or a more recent version is required.")
 
 app = Flask(__name__)
 
