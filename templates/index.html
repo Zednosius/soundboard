@@ -9,9 +9,9 @@
 <div class=page>
   <h1>Soundboard</h1> <button class="stopbutton clickeffect">STOP</button>
 </div>
-    {% for sound in sounds %}
+    {% for name in sounds %}
     <div class=boarddiv>
-        <button class="boardbutton clickeffect" value="{{sound[1]|string}}">{{sound[0]|string}}</button>
+        <button class="boardbutton clickeffect" value="{{name}}">{{name}}</button>
     </div>
     {% endfor %}
 {% endblock %}

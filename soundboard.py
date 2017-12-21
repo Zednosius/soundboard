@@ -15,12 +15,12 @@ app = Flask(__name__)
 sound_filenames = list(os.walk("sounds"))[0][2]
 sound_filenames = sorted(sound_filenames)
 zipped_name_filenames = list(zip(map(lambda x: os.path.splitext(x)[0], sound_filenames), sound_filenames))
-cache = {value: value for (key,value) in zipped_name_filenames}
-cache["sounds"] = zipped_name_filenames
+sound_cache = {key: value for (key,value) in zipped_name_filenames}
 instance = vlc.Instance()
 player = instance.media_player_new()
-
-print("Player type",type(player))
+print("Sounds")
+pprint(sound_cache)
+print()
 
 @app.route("/", methods=["POST","GET"])
 def hello():
@@ -33,17 +33,16 @@ def hello():
         if player is not None and data.get("stop",False):
             player.stop()
             return jsonify(success=True)
-        elif data["mp3"] in cache:
-            player.set_media(instance.media_new("sounds/"+data["mp3"]))
+        elif data["mp3"] in sound_cache:
+            player.set_media(instance.media_new_path("sounds/"+sound_cache[data["mp3"]]))
             
-            # time.sleep(1)
             player.play()
             return jsonify(success=True)
         else:
             return jsonify(success=False)
         
     else:
-        return render_template("index.html", sounds=map(lambda x: (x[0].replace("_"," "),x[1]), cache["sounds"]))
+        return render_template("index.html", sounds=sound_cache)
 
 if __name__ == '__main__':
     app.run(threaded=True, host="0.0.0.0",debug=False)
