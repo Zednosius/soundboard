@@ -1,4 +1,5 @@
 sounds/*
+old_sounds/
 *.pyc
 *.dll
 dist/
