@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import request, render_template
 from flask import jsonify
+from collections import OrderedDict
 import os
 import vlc
 from pprint import pprint
@@ -15,7 +16,7 @@ app = Flask(__name__)
 sound_filenames = list(os.walk("sounds"))[0][2]
 sound_filenames = sorted(sound_filenames)
 zipped_name_filenames = list(zip(map(lambda x: os.path.splitext(x)[0], sound_filenames), sound_filenames))
-sound_cache = {key: value for (key,value) in zipped_name_filenames}
+sound_cache = OrderedDict([(key, value) for (key,value) in zipped_name_filenames])
 instance = vlc.Instance()
 player = instance.media_player_new()
 print("Sounds")
