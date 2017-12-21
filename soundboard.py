@@ -45,4 +45,4 @@ def hello():
         return render_template("index.html", sounds=sound_cache)
 
 if __name__ == '__main__':
-    app.run(threaded=True, host="0.0.0.0",debug=False)
+    app.run(threaded=True, host="0.0.0.0",debug=False, port=80)
