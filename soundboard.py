@@ -13,6 +13,7 @@ app = Flask(__name__)
 
 #Gets filenames of sounds
 sound_filenames = list(os.walk("sounds"))[0][2]
+sound_filenames = sorted(sound_filenames)
 zipped_name_filenames = list(zip(map(lambda x: os.path.splitext(x)[0], sound_filenames), sound_filenames))
 cache = {value: value for (key,value) in zipped_name_filenames}
 cache["sounds"] = zipped_name_filenames
